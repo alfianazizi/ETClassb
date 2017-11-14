@@ -128,8 +128,10 @@ public class MainActivity extends AppCompatActivity
             mFirebaseAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-
+        } else if (id == R.id.nav_uploads){
+            startActivity(new Intent(MainActivity.this, UploadActivity.class));
         }
+
 
 
 
