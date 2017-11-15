@@ -34,6 +34,7 @@ public class RegistrationFormActivity extends AppCompatActivity {
         inputAngkatan = (EditText) findViewById(R.id.angkatan);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,11 +43,6 @@ public class RegistrationFormActivity extends AppCompatActivity {
                 final String name = inputName.getText().toString().trim();
                 final String nim = inputNim.getText().toString().trim();
                 final String angkatan = inputAngkatan.getText().toString().trim();
-
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(getApplicationContext(), "Masukkan Username!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 if (TextUtils.isEmpty(name)) {
                     Toast.makeText(getApplicationContext(), "Masukkan Nama!", Toast.LENGTH_SHORT).show();
@@ -65,9 +61,12 @@ public class RegistrationFormActivity extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                mDatabase.child(username).child("name").setValue(name);
-                mDatabase.child(username).child("nim").setValue(nim);
-                mDatabase.child(username).child("angkatan").setValue(angkatan);
+                Intent e = getIntent();
+                String userID = e.getStringExtra("uemail");
+
+                mDatabase.child("user").child(userID).child("name").setValue(name);
+                mDatabase.child("user").child(userID).child("nim").setValue(nim);
+                mDatabase.child("user").child(userID).child("angkatan").setValue(angkatan);
                 startActivity(new Intent(RegistrationFormActivity.this, MainActivity.class));
                 finish();
 
