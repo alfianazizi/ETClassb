@@ -24,9 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-    private DatabaseReference mDatabase;
-    private DatabaseReference nameUser;
-    private DatabaseReference emailUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +33,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-        mDatabase =  FirebaseDatabase.getInstance().getReference();
-        nameUser = mDatabase.child("name");
-        emailUser = mDatabase.child("email");
-
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputName = (EditText) findViewById(R.id.name);
@@ -65,14 +59,8 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String name = inputName.getText().toString().trim();
                 final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
-
-                if (TextUtils.isEmpty(name)) {
-                    Toast.makeText(getApplicationContext(), "Masukkan Nama!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -104,7 +92,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                                    startActivity(new Intent(SignUpActivity.this, RegistrationFormActivity.class));
                                     finish();
                                 }
                             }

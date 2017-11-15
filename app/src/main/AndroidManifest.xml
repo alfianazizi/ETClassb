@@ -23,9 +23,12 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".UploadActivity"></activity>
+        <activity android:name=".UploadActivity" />
+        <activity
+            android:name=".RegistrationFormActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
