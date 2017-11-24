@@ -29,7 +29,6 @@ public class RegistrationFormActivity extends AppCompatActivity {
         mDatabase =  FirebaseDatabase.getInstance().getReference();
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputName = (EditText) findViewById(R.id.name);
-        inputUsername = (EditText) findViewById(R.id.username);
         inputNim = (EditText) findViewById(R.id.nim);
         inputAngkatan = (EditText) findViewById(R.id.angkatan);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -39,7 +38,6 @@ public class RegistrationFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String username = inputUsername.getText().toString().trim();
                 final String name = inputName.getText().toString().trim();
                 final String nim = inputNim.getText().toString().trim();
                 final String angkatan = inputAngkatan.getText().toString().trim();
@@ -60,6 +58,7 @@ public class RegistrationFormActivity extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
+
 
                 Intent e = getIntent();
                 String userID = e.getStringExtra("uemail");

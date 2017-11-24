@@ -1,5 +1,6 @@
 package com.example.azizi.etclass;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+    public String currentEmail, userAdmin;
     Toolbar toolbar;
     DrawerLayout drawer;
     NavigationView navigationView;
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+        currentEmail = mFirebaseUser.getEmail().toString();
+        userAdmin = "admin.etclass@gmail.com";
 
         if (mFirebaseUser == null){
             //Not signed in, launch the Sign In Activity
@@ -97,10 +103,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Toast.makeText(getApplicationContext(), "Action Settings", Toast.LENGTH_SHORT).show();
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -128,8 +130,26 @@ public class MainActivity extends AppCompatActivity
             mFirebaseAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-        } else if (id == R.id.nav_uploads){
-            startActivity(new Intent(MainActivity.this, UploadActivity.class));
+        } else if (id == R.id.nav_uploads) {
+
+            if (currentEmail.equalsIgnoreCase(userAdmin)) {
+                startActivity(new Intent(MainActivity.this, UploadActivity.class));
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setCancelable(true);
+                builder.setTitle("WARNING!!!");
+                builder.setMessage("Contact Your Admin");
+
+                builder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+
+            }
         }
 
 
