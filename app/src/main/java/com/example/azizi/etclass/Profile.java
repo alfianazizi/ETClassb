@@ -2,12 +2,15 @@ package com.example.azizi.etclass;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
+
+import java.util.Random;
 
 /**
  * Created by Azizi on 11/6/2017.
@@ -65,6 +70,13 @@ public class Profile extends android.support.v4.app.Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String displaynama = (String) dataSnapshot.getValue();
                 name.setText("Nama: " + displaynama);
+                Random random = new Random();
+                int color = Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256));
+                TextDrawable drawable = TextDrawable.builder()
+                        .buildRound(displaynama.substring(0,1) , color);
+
+                ImageView image = (ImageView)profileView.findViewById(R.id.image_view);
+                image.setImageDrawable(drawable);
             }
 
             @Override
@@ -73,7 +85,7 @@ public class Profile extends android.support.v4.app.Fragment {
             }
         });
 
-        email.setText("User Email: " + user.getEmail());
+        email.setText("Email: " + user.getEmail());
 
         nimUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -101,6 +113,10 @@ public class Profile extends android.support.v4.app.Fragment {
 
             }
         });
+
+
+
+
 
 
 

@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-        currentEmail = mFirebaseUser.getEmail().toString();
-        userAdmin = "admin.etclass@gmail.com";
 
         if (mFirebaseUser == null){
             //Not signed in, launch the Sign In Activity
@@ -57,6 +55,10 @@ public class MainActivity extends AppCompatActivity
             finish();
             return;
         }
+
+        currentEmail = mFirebaseUser.getEmail().toString();
+        userAdmin = "admin.etclass@gmail.com";
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

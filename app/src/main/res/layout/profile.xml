@@ -9,38 +9,68 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin"
-        android:layout_alignParentTop="true"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@color/colorAccent">
+        android:layout_marginBottom="32dp">
+        <ImageView android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:id="@+id/image_view"/>
 
         <TextView
             android:id="@+id/displayed_name"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+            android:layout_marginLeft="25pt"
+            android:layout_marginTop="40dp"
+            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+            android:drawableStart="@drawable/ic_perm_identity_black_24dp"
+            android:drawablePadding="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/greyc" />
 
         <TextView
+            android:drawableStart="@drawable/ic_email_black_24dp"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="5dp"
             android:id="@+id/displayed_email"
-            android:textStyle="bold"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:textColor="@color/greyc"
+            android:layout_marginLeft="25pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+            android:layout_marginTop="20dp" />
 
         <TextView
+            android:drawableStart="@drawable/ic_card_membership_black_24dp"
+            android:drawableLeft="@drawable/ic_card_membership_black_24dp"
+            android:drawablePadding="5dp"
             android:id="@+id/displayed_nim"
-            android:textStyle="bold"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:textColor="@color/greyc"
+            android:layout_marginLeft="25pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+            android:layout_marginTop="20dp" />
 
         <TextView
+            android:drawableStart="@drawable/ic_timeline_black_24dp"
+            android:drawableLeft="@drawable/ic_timeline_black_24dp"
+            android:drawablePadding="5dp"
             android:id="@+id/displayed_angkatan"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
+            android:layout_marginLeft="25pt"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/greyc"/>
 
     </LinearLayout>
 </RelativeLayout>
