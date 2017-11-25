@@ -13,19 +13,20 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:background="@mipmap/ic_launcher" />
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="7dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/logoetclass" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="5dp"
         android:text="ETClass"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="@color/greyc"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Made by A2"
+        android:textColor="@color/greyc"
         android:textStyle="bold"/>
 
 </LinearLayout>

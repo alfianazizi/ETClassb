@@ -16,11 +16,11 @@
 
 
         <ImageView
-            android:layout_width="@dimen/logo_w_h"
-            android:layout_height="@dimen/logo_w_h"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/logoetclass" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -28,17 +28,17 @@
 
             <EditText
                 android:id="@+id/email"
-                android:background="@color/colorPrimary"
-                android:padding="10dp"
-                android:drawableStart="@drawable/ic_email_white_24dp"
-                android:drawableLeft="@drawable/ic_email_white_24dp"
-                android:drawablePadding="10dp"
-                android:layout_gravity="center"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_email_white_24dp"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
+                android:padding="10dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
