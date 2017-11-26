@@ -41,8 +41,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
-    <string-array name="planets_array">
+    <string-array name="pelajaran_array">
         <item>RL</item>
         <item>SISDIG</item>
         <item>PSWK</item>
@@ -51,6 +50,12 @@
         <item>Saturn</item>
         <item>Uranus</item>
         <item>Neptune</item>
+    </string-array>
+
+    <string-array name="semester_array">
+        <item>Semester 1</item>
+        <item>Semester 2</item>
+        <item>Semester 3</item>
     </string-array>
 
 </resources>

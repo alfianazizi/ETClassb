@@ -2,7 +2,6 @@ package com.example.azizi.etclass;
 
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -74,7 +73,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.planets_array, android.R.layout.simple_spinner_item);
+                R.array.pelajaran_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -140,6 +139,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     displayName = myFile.getName();
                 }
                 uploadFile(data.getData());
+                Intent e = new Intent(UploadActivity.this, ViewUploadsActivity.class);
+                e.putExtra("displayname", displayName);
             }
 
 
@@ -154,7 +155,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     //so we are not explaining it
     private void uploadFile(Uri data) {
         progressBar.setVisibility(View.VISIBLE);
-        StorageReference sRef = mStorageReference.child(Constant.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + ".pdf");
+        StorageReference sRef = mStorageReference.child(Constant.STORAGE_PATH_UPLOADS + displayName);
         sRef.putFile(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @SuppressWarnings("VisibleForTests")
@@ -173,7 +174,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                             mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constant.DATABASE_PATH_UPLOADS4);
                         }
 
-                        Uploads upload = new Uploads(displayName, taskSnapshot.getDownloadUrl().toString());
+                        Upload upload = new Upload(displayName, taskSnapshot.getDownloadUrl().toString());
                         mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(upload);
                     }
                 })
