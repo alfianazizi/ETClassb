@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         currentEmail = mFirebaseUser.getEmail().toString();
-        userAdmin = "admin.etclass@gmail.com";
+        userAdmin = "admin@etclass.com";
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
